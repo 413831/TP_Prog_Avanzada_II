@@ -1,8 +1,8 @@
-const { getAll,getByID } = require('../models/audioModel')
+const { getAll,getByID,create } = require('../models/audioModel')
 
 module.exports = {
     getAll: async (req, res ) => getAllAudios(req,res),
-    getByID: (req, res ) => getAudioByID(req,res),
+    getByID: async (req, res ) => getAudioByID(req,res),
     upload: (req, res ) => createAudio(req,res), 
     modify: (req, res ) => modifyAudio(req,res), 
     delete: (req, res ) => deleteAudio(req,res), 
@@ -23,29 +23,12 @@ async function getAudioByID(req, res) {
   res.send(data);
 }
 
-function createAudio(req, res) {
-    const newAudio = req.body;
+async function createAudio(req, res) {
+    const data = req.body;
   
-    let audiosArray;
+    const response = await create(data);
   
-    try {
-      const data = fs.readFileSync("./data/audios.json");
-      audiosArray = JSON.parse(data);
-    } catch (error) {
-      return res.status(500).json({ message: "Error leyendo el archivo JSON" });
-    }
-  
-    audiosArray.push(newAudio);
-  
-    try {
-      fs.writeFileSync(
-        "./data/audios.json",
-        JSON.stringify(audiosArray, null, 2)
-      );
-      res.status(200).json({ message: "Audio agregado exitosamente" });
-    } catch (error) {
-      res.status(500).json({ message: "Error escribiendo en el archivo JSON" });
-    }
+    res.send(response).status(200)
 }
 
 function modifyAudio(req, res) {
