@@ -1,11 +1,12 @@
 const express = require('express');
 const app = express();
+const db = require('./src/models');
 const PORT = 3001;
 const subscriptionRoutes = require('./src/routes/subscriptionRoutes.js');
 const usuariosRoutes = require('./src/routes/usuariosRoutes.js');
 const mainRoutes = require('./src/routes/mainRoutes.js');
 
-app.use(express.urlencoded());
+
 app.use(express.json());
 
 // config template engines
@@ -19,4 +20,14 @@ app.use('/plans', subscriptionRoutes);
 app.use('/usuarios', usuariosRoutes);
 app.use('/', mainRoutes);
 
-app.listen(PORT, () => console.log(`Server running at port ${PORT}`));
+// Sincronizamos el modelo con la base de datos y arrancamos el servidor
+db.sequelize.sync()
+  .then(() => {
+    console.log('Conectado a la base de datos');
+    app.listen(PORT, () => {
+      console.log(`Servidor corriendo en http://localhost:${PORT}`);
+    });
+  })
+  .catch(err => {
+    console.error('Error al conectar con la base de datos:', err);
+  });

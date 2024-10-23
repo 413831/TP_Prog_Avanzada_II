@@ -17,7 +17,22 @@ const client = new Client({
     port: 5432,
 })
 
+const dbconfig = {
+    HOST: "localhost",
+    USER: "postgres",
+    PASSWORD: "tripl3_",
+    DB: "tp_prog_av",
+    dialect: "postgres",
+    pool: {
+      max: 5,
+      min: 0,
+      acquire: 30000,
+      idle: 10000
+    }
+  };
+
 module.exports = {
  client,
- pool
+ pool,
+ dbconfig
 }
