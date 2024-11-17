@@ -1,0 +1,26 @@
+<% include partials/navbar %>
+<div class="container">
+    <h1>Modificar Suscripción</h1>
+    <form action="/modificar" method="POST">
+        <div class="form-group">
+            <label>Nombre de Plan:</label>
+            <input type="text" name="nombrePlan" class="form-control" disabled>
+        </div>
+        <div class="form-group">
+            <label>Periodicidad:</label>
+            <input type="text" name="periodicidad" class="form-control" disabled>
+        </div>
+        <div class="form-group">
+            <label>Porcentaje de Ganancia:</label>
+            <input type="number" name="porcentajeGanancia" class="form-control" disabled>
+        </div>
+        <button type="button" class="btn btn-warning" id="btn-modificar">Modificar</button>
+        <button type="submit" class="btn btn-primary" style="display: none;" id="btn-confirmar">Confirmar</button>
+    </form>
+</div>
+<script>
+    document.getElementById('btn-modificar').addEventListener('click', function () {
+        document.querySelectorAll('input').forEach(input => input.removeAttribute('disabled'));
+        document.getElementById('btn-confirmar').style.display = 'inline';
+    });
+</script>

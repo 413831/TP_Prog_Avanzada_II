@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <title>Alta suscripcion</title>
+</head>
+<body>
+   
+    <div class="container" >
+        <div>
+            <h1>Crear nueva suscripcion</h1>
+        </div>
+<br>    
+        <form action="/plans/subscription/" method="POST">
+            <div class="form-group">
+                <label for="id" class="form-label">ID</label>
+                <input type="number"  class="form-control" id="id" name="id" placeholder="ID" required>
+                <small id="id" class="form-text text-muted"></small>
+              </div>
+            <div class="form-group">
+              <label for="description" class="form-label">Descripcion</label>
+              <input type="text" class="form-control" id="description" name="description" aria-describedby="Descripcion" placeholder="Descripcion" required>
+              <small id="description" class="form-text text-muted">Esta sera la descripcion del nuevo plan de suscripcion para creadores</small>
+            </div>
+            <div class="form-group">
+                <label for="type" class="form-label">Tipo</label>
+                <input type="text" class="form-control" id="type" name="type" aria-describedby="Descripcion" placeholder="Tipo de suscripcion" required>
+                <small id="type" class="form-text text-muted">Este campo indica cada cuanto se le cobrara al creador por la suscripcion</small>
+              </div>
+            <div class="form-group">
+              <label for="creatorProfit" class="form-label">Porcentaje</label>
+              <input type="number" class="form-control" id="creatorProfit" name="creatorProfit" placeholder="Porcentaje" required>
+              <small id="creatorProfit" class="form-text text-muted">Este sera el porcentaje de ganancia para el creador del total de la venta </small>
+            </div>
+            <div class="form-group">
+                <label for="subscribedTime" class="form-label">Periodicidad</label>
+                <input type="number" class="form-control" id="subscribedTime" name="subscribedTime" placeholder="Periodicidad" required>
+                <small id="subscribedTime" class="form-text text-muted">Este sera el periodo de tiempo en dias naturales de validez de la suscripcion </small>
+              </div>
+            <button type="submit" class="btn btn-primary">Crear suscripcion</button>
+          </form>
+          </div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<% include partials/navbar %>
+<div class="container">
+    <h1>Eliminar Suscripción</h1>
+    <form action="/subscription/:id" method="POST">
+        <ul>
+            <% suscripciones.forEach(suscripcion => { %>
+                <li>
+                    <input type="radio" name="suscripcionId" value="<%= suscripcion.id %>">
+                    <%= suscripcion.nombrePlan %>
+                </li>
+            <% }) %>
+        </ul>
+        <button type="submit" class="btn btn-danger">Confirmar</button>
+    </form>
+</div>

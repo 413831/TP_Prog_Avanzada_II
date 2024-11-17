@@ -1,0 +1,8 @@
+body {
+    background-color: #f5f5dc; /* Color beige */
+    color: #003366; /* Color azul oscuro */
+}
+.navbar-default {
+    background-color: #dcdcdc; /* Color crema */
+    border-color: #003366;
+}

@@ -1,0 +1,19 @@
+<% include partials/navbar %>
+<div class="container">
+    <h1>Alta de Suscripción</h1>
+    <form action="/subscription/:id" method="POST">
+        <div class="form-group">
+            <label>Nombre de Plan:</label>
+            <input type="text" name="nombrePlan" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Periodicidad:</label>
+            <input type="text" name="periodicidad" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Porcentaje de Ganancia:</label>
+            <input type="number" name="porcentajeGanancia" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Confirmar</button>
+    </form>
+</div>

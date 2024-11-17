@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <title>AudioLibre</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md">
+          <h1><%= view.title %></h1>
+        </div>
+        
+      </div>
+
+      <div class="row">
+        <div class="col-md">
+         <br>
+        </div>
+        
+      </div>
+
+      <div class="row">
+      
+
+        <div class="col-md">
+          <div class="card" style="width: 15rem">
+            <div class="card-body">
+              <h5 class="card-title"><%= plan.description %></h5>
+              <p class="card-text"> <%= plan.creator_profit %>% de ganancia</p>
+              <ul>
+                <li>Característica 1</li>
+                <li>Característica 2</li>
+                <li>Característica 3</li>
+              </ul>
+              <a href="#" class="btn btn-success">Seleccionar</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>
