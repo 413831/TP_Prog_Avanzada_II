@@ -1,22 +1,18 @@
 const jwt = require('jsonwebtoken');
 
-const JWT_SECRET = 'secreto_super_seguro'; // Usa una variable de entorno en producción
+exports.protect = (req, res, next) => {
+  let token = req.headers.authorization;
 
-const authenticateToken = (req, res, next) => {
-  const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1]; // El token suele venir en el formato "Bearer TOKEN"
-
-  if (!token) {
-    return res.status(401).json({ error: 'Token no proporcionado' });
+  if (!token || !token.startsWith('Bearer ')) {
+    return res.status(401).json({ message: 'Acceso no autorizado' });
   }
 
-  jwt.verify(token, JWT_SECRET, (err, user) => {
-    if (err) {
-      return res.status(403).json({ error: 'Token inválido o expirado' });
-    }
-    req.user = user; 
+  try {
+    token = token.split(' ')[1];
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
     next();
-  });
+  } catch (error) {
+    return res.status(401).json({ message: 'Token inválido o expirado' });
+  }
 };
-
-module.exports = authenticateToken;
